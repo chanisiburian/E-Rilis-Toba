@@ -33,6 +33,13 @@ class BeritaController extends Controller{
         }
     }
 
+    public function homepage(Request $request){
+        $where["dihapus"] = 0;
+        $data = Berita::where($where)->orderBy("berita_id","desc")->with("user")->get();
+        
+        return view("home", compact("data"));
+    }
+
     public function dashboard(Request $request){
         $where["dihapus"] = 0;
         
