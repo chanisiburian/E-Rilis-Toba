@@ -39,6 +39,7 @@ Route::middleware(AuthAccess::class)->group(function(){
 });
 
 Route::get('', [BeritaController::class, "homepage"]);
+Route::get('/berita', [BeritaController::class, "berita"]);
 
 
 Route::middleware(RoleAccessAdmin::class)->group(function(){

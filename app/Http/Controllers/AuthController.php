@@ -35,7 +35,7 @@ class AuthController extends Controller{
             return redirect()->back()->withErrors(['error' => "User tidak ditemukan"]);
         }
 
-        if(isset($request->password) && !Hash::check($request->password,$user->password)){
+        if(!isset($request->password) && empty($request->password) && !Hash::check($request->password,$user->password)){
             return redirect()->back()->withErrors(['error' => "Password salah"]);
         }
         Auth::login($user);

@@ -40,6 +40,13 @@ class BeritaController extends Controller{
         return view("home", compact("data"));
     }
 
+    public function berita(Request $request){
+        $where["dihapus"] = 0;
+        $data = Berita::where($where)->orderBy("berita_id","desc")->with("user")->get();
+        
+        return view("berita", compact("data"));
+    }
+
     public function dashboard(Request $request){
         $where["dihapus"] = 0;
         
