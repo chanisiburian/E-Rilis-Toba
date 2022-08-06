@@ -88,8 +88,14 @@
                         <a href="#about" class="nav-item nav-link">About</a>
                         <a href="#kontak" class="nav-item nav-link">Kontak</a>
                     </div>
+                    @if(Auth::user() == null)
                     <a href="{{ url('register') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 mx-4 ">Register</a>
                     <a href="{{ route('login') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ">Login</a>
+                    @elseif(Auth::user()->level_id == 1)
+                    <a href="{{ route('admin') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 mx-4">Kelola</a>
+                    @elseif(Auth::user()->level_id == 2)
+                    <a href="{{ url('user') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 mx-4">Dashboard</a>
+                    @endif
                 </div>
             </nav>
 
