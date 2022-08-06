@@ -18,11 +18,11 @@ class RoleAccessAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $cek = User::where('level_id',1)->first();
-        if($cek->level_id == 1)
+        if(Auth::check())
         {
-            $cek = Auth::login($cek);
-            return $next($request);
+            if(Auth::user()->level_id == '1'){
+                return $next($request);
+            }
         }
         return abort(404);
     }

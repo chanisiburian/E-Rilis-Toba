@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ url('user/update').'/'.$data->user_id }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('user/update').'/'.$data->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-8">

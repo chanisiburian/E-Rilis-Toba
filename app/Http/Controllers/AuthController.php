@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SentMail;
-Use Alert;
+// Use Alert;
 
 class AuthController extends Controller{
 
@@ -30,19 +29,34 @@ class AuthController extends Controller{
     }
 
     public function login(Request $request){
+
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
         $user = User::where(['email' => $request->email])->first();
         if(!$user){
             return redirect()->back()->withErrors(['error' => "User tidak ditemukan"]);
         }
 
-        if(!isset($request->password) && empty($request->password) && !Hash::check($request->password,$user->password)){
+        if(!Hash::check($request->password,$user->password)){
+
             return redirect()->back()->withErrors(['error' => "Password salah"]);
+
         }
+        
         Auth::login($user);
+
         if($user->level_id == '1'){
+
             return redirect()->route("admin");
+
         }else{
-            return redirect()->route("user");
+
+            return redirect()->route("user.index");
+
         }
     }
 

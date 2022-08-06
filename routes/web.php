@@ -1,15 +1,13 @@
 <?php
 
+namespace App\Http\Controllers;
+
+
 use App\Http\Middleware\AuthAccess;
-use App\Http\Middleware\PageAccess;
+use App\Http\Middleware\isLogin;
 use App\Http\Middleware\RoleAccessAdmin;
 use App\Http\Middleware\RoleAccessUser;
-use App\Http\Middleware\VerifAccess;
-use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,22 +49,21 @@ Route::middleware(RoleAccessAdmin::class)->group(function(){
 
 });
 
-Route::middleware(RoleAccessUser::class)->group(function(){
+Route::middleware(RoleAccessUser::class)->name('user.')->group(function(){
     
-    Route::get('user', [BeritaController::class, "dashboard"])->name('user');
-    Route::get('user/berita', [BeritaController::class, "index"])->name('user.berita');
-    Route::get('user/verifikasi', [UserController::class, "verifikasi"])->name('user.verifikasi');
-    Route::get('user/profile', [UserController::class, "profile"])->name("user.profile");
+    Route::get('user', [BeritaController::class, "dashboard"])->name('index');
+    Route::get('user/berita', [BeritaController::class, "index"])->name('berita');
+    Route::get('user/verifikasi', [UserController::class, "verifikasi"])->name('verifikasi');
+    Route::get('user/profile', [UserController::class, "profile"])->name("profile");
 
 });
 
 Route::get('logout', function(){
     Auth::logout();
-    Cookie::queue(Cookie::forget('_token'));
     return redirect('');
 });
 
-Route::middleware(RoleAccessAdmin::class,RoleAccessUser::class)->group(function(){
+Route::middleware(isLogin::class)->group(function(){
     // BERITA
     Route::post('berita/add', [BeritaController::class, "add"])->name("berita.add");
     Route::post('berita/update/{id}', [BeritaController::class, "update"])->name("berita.update");

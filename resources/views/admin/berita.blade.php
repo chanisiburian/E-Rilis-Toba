@@ -34,7 +34,7 @@
                                 <th>
                                     <button 
                                         data-user="{{ $value->user->nama }}" 
-                                        data-berita_id="{{ $value->berita_id }}" 
+                                        data-berita_id="{{ $value->id }}" 
                                         data-judul="{{ $value->judul }}" 
                                         data-sampul="{{ $value->sampul }}" 
                                         data-isi="{{ $value->isi }}" 
@@ -48,7 +48,7 @@
                                     @if($value->status == 0)
                                     <button 
                                         data-user="{{ $value->user->nama }}" 
-                                        data-berita_id="{{ $value->berita_id }}" 
+                                        data-berita_id="{{ $value->id }}" 
                                         data-judul="{{ $value->judul }}" 
                                         data-sampul="{{ $value->sampul }}" 
                                         data-isi="{{ $value->isi }}" 
@@ -61,7 +61,7 @@
                                     @endif
                                     <button 
                                         data-user="{{ $value->user->nama }}" 
-                                        data-berita_id="{{ $value->berita_id }}" 
+                                        data-berita_id="{{ $value->id }}" 
                                         data-judul="{{ $value->judul }}" 
                                         data-sampul="{{ $value->sampul }}" 
                                         data-isi="{{ $value->isi }}" 

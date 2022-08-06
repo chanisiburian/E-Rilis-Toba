@@ -15,14 +15,24 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('username');
+            $table->string('email');
+            $table->string('telepon');
             $table->unsignedBigInteger('level_id');
             $table->foreign('level_id')->references('id')->on('levels');
-            $table->string('name');
-            $table->string('phone')->nullable();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('remember_token');
+            $table->string('foto')->nullable();
+            $table->string('media_digital')->nullable();
+            $table->string('nama_perusahaan')->nullable();
+            $table->string('url_mitra')->nullable();
+            $table->string('nib')->nullable();
+            $table->string('no_rekening')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('npwp')->nullable();
+            $table->tinyInteger('status')->default(0);
+            $table->softDeletes();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

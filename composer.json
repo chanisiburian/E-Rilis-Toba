@@ -16,7 +16,6 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.4",
         "phpoffice/phpspreadsheet": "^1.23",
-        "realrashid/sweet-alert": "^5.1",
         "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {

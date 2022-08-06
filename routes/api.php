@@ -1,12 +1,5 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Http\Middleware\ApiAccess;
-use App\Http\Middleware\ApiAccessAdmin;
-use App\Http\Middleware\ApiAccessUser;
-use App\Http\Middleware\ApiVerif;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*

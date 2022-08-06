@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,60 +10,53 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller{
 
     public function index(Request $request){
-        $where["dihapus"] = 0;
 
-        if(Auth::user()->level_id == 2){
-            $where["user_id"] = Auth::user()->id;
+        $data = new User;
+
+        if($request->input('id')){
+            $data = $data->where('id',$request->id);
+        }else{
+            if(auth()->user()->level_id == '2'){
+                $data = $data->where('id',auth()->id());
+            }
         }
 
-        if(!empty($request->id)){
-            $where["user_id"] = $request->id;
+        if($request->input('status')){
+            $data = $data->where('status',$request->status);
         }
+        
 
-        if(!empty($request->status)){
-            $where["status"] = $request->status;
-        }
+        $data = $data->orderBy('id','desc')->get();
 
-        $data = User::where($where)->orderBy("user_id","desc")->get();
-        if(Auth::user()->level_id == "1"){
+        if(auth()->user()->level_id == "1"){
             return view("admin.user",compact("data"));
         }
 
-        if(Auth::user()->level_id == "2"){
+        if(auth()->user()->level_id == "2"){
             return view("user.user");
         }
     }
 
     public function profile(Request $request){
-        $where["dihapus"] = 0;
-        $where["user_id"] = Auth::user()->user_id;
 
-        if(!empty($request->id)){
-            $where["user_id"] = $request->id;
-        }
-
-        if(!empty($request->status)){
-            $where["status"] = $request->status;
-        }
-
-        $data = User::where($where)->orderBy("user_id","desc")->first();
+        $data = auth()->user();
         
         return view("user",compact("data"));
     }
 
     public function verifikasi(Request $request){
-        $where["dihapus"] = 0;
-        $where["user_id"] = Auth::user()->user_id;
+
+        $where["id"] = Auth::user()->id;
 
         if(!empty($request->id)){
-            $where["user_id"] = $request->id;
+            $where["id"] = $request->id;
         }
 
         if(!empty($request->status)){
             $where["status"] = $request->status;
         }
 
-        $data = User::where($where)->orderBy("user_id","desc")->first();
+        $data = User::where($where)->orderBy("id","desc")->first();
         
         return view("user/verifikasi",compact("data"));
     }
@@ -90,7 +82,7 @@ class UserController extends Controller{
     }
 
     public function update(Request $request, $id){
-        $user = User::where('user_id',$id)->first();
+        $user = User::find($id);
         $password = $user->password;
         $data = $request->all();
 
@@ -145,7 +137,7 @@ class UserController extends Controller{
         unset($data["_token"]);
         unset($data["password_confirmation"]);
 
-        User::where("user_id", $id)->update($data);
+        User::find($id)->update($data);
         if(isset($data['media_digital'])){
             return redirect("user");
         }
@@ -155,9 +147,7 @@ class UserController extends Controller{
 
     
     public function delete($id){
-        User::where("user_id", $id)->update([
-            "dihapus" => 1
-        ]);
+        User::find($id)->delete();
 
         return redirect()->back()->withErrors(['error' => "Berhasil menghapus data"]);
     }

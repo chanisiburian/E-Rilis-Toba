@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ApiAccess
+class isLogin
 {
     /**
      * Handle an incoming request.
@@ -18,26 +17,10 @@ class ApiAccess
      */
     public function handle(Request $request, Closure $next)
     {
-        $token = $request->bearerToken();
-        if(empty($token))
+        if(Auth::check())
         {
-            Auth::logout();
-            return response()->json([
-                'status' => false,
-                'message' => 'Unauthentication.'
-            ]);
-        }
-
-        $cek = User::where(['remember_token' => $token])->first();
-        if($cek)
-        {
-            Auth::login($cek);
             return $next($request);
         }
-
-        return response()->json([
-            'status' => false,
-            'message' => 'Unauthentication.'
-        ]);
+        return abort(404);
     }
 }

@@ -56,14 +56,14 @@
                                     >Detail</button>
                                     @if($value->media_digital != "" && $value->nama_perusahaan != "" && $value->url_mitra != "" && $value->nib != "" && $value->no_rekening != "" && $value->ktp != "" && $value->kta != "" && $value->npwp != "" && $value->status != 1)
                                     <button 
-                                        data-user_id="{{ $value->user_id }}"
+                                        data-user_id="{{ $value->id }}"
                                         data-toggle="modal" 
                                         data-target="#approveModal" 
                                         class="btn btn-primary btn-approve"
                                     >Approve</button>
                                     @endif
                                     <button 
-                                        data-user_id="{{ $value->user_id }}" 
+                                        data-user_id="{{ $value->id }}" 
                                         data-toggle="modal" data-target="#deleteModal" 
                                         class="mx-1 btn btn-danger btn-delete"
                                     >Delete</button>
