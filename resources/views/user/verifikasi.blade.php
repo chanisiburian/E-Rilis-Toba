@@ -27,7 +27,7 @@
                                 <input required type="text" value="<?= $data->url_mitra ?>" name="url_mitra" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">NIB</label>
+                                <label for="">NIB (Nomor Induk Berusaha)</label>
                                 <input required type="text" value="<?= $data->nib ?>" name="nib" class="form-control">
                             </div>
                             <div class="form-group">

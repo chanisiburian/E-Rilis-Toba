@@ -1,4 +1,4 @@
-/********** Template CSS **********/
+/**** Template CSS ****/
 :root {
     --primary: #2124B1;
     --secondary: #4777F5;
@@ -7,7 +7,7 @@
 }
 
 
-/*** Spinner ***/
+/* Spinner */
 #spinner {
     opacity: 0;
     visibility: hidden;
@@ -30,7 +30,7 @@
 }
 
 
-/*** Heading ***/
+/* Heading */
 h1,
 h2,
 h3,
@@ -46,7 +46,7 @@ h6,
 }
 
 
-/*** Button ***/
+/* Button */
 .btn {
     font-weight: 500;
     transition: .5s;
@@ -79,7 +79,7 @@ h6,
 }
 
 
-/*** Navbar ***/
+/* Navbar */
 .navbar-light .navbar-nav .nav-link {
     position: relative;
     margin-left: 25px;
@@ -181,7 +181,7 @@ h6,
 }
 
 
-/*** Hero Header ***/
+/* Hero Header */
 .hero-header {
     background:
         url(../images/bg-dot.png),
@@ -199,7 +199,7 @@ h6,
 }
 
 
-/*** Section Title ***/
+/* Section Title */
 .section-title::before {
     position: absolute;
     content: "";
@@ -247,7 +247,7 @@ h6,
 }
 
 
-/*** Service ***/
+/* Service */
 .service-item {
     position: relative;
     height: 350px;
@@ -319,7 +319,7 @@ h6,
 }
 
 
-/*** Testimonial ***/
+/* Testimonial */
 .newsletter,
 .testimonial {
     background:
@@ -354,7 +354,7 @@ h6,
 }
 
 
-/*** Team ***/
+/* Team */
 .team-item {
     position: relative;
     transition: .5s;
@@ -390,7 +390,7 @@ h6,
 }
 
 
-/*** Project Portfolio ***/
+/* Project Portfolio */
 #portfolio-flters .btn {
     position: relative;
     display: inline-block;
@@ -456,7 +456,7 @@ h6,
 }
 
 
-/*** Footer ***/
+/* Footer */
 .footer {
     background: url(../images/footer.png) center center no-repeat;
     background-size: contain;
@@ -522,4 +522,47 @@ h6,
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+/* running text */
+/* 
+.container1{position: relative;
+width: 50%;
+height: 45vh;
+display: flex;
+overflow: hidden;}
+
+.left{position: relative;
+width:100%;
+height: 100%;
+overflow: hidden;}
+
+.running{position: absolute;
+    font-size: 1em;
+    white-space: nowrap;
+    color:#000000;
+    line-height: 70vh;
+    animation:anim 200s linear infinite}
+
+    @keyframes anim {
+        0%{transform: translateX(0);}
+        100%{transform: translateX(-100%);}
+        
+    }
+.left .running{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px;
+} */
+.runtext{
+    text-align: center;
+    background-color: #2124B1;
+    padding: 3px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;   
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,500;1,700&family=Poppins:ital,wght@0,600;1,600&display=swap');
+.xyz{
+    color: #F7FAFF;  
+    font-family: 'Montserrat', sans-serif;
 }

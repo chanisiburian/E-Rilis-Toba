@@ -87,9 +87,14 @@
                         <a href="{{ url('') }}#berita" class="nav-item nav-link">Berita</a>
                         <a href="{{ url('') }}#about" class="nav-item nav-link">About</a>
                         <a href="{{ url('') }}#kontak" class="nav-item nav-link">Kontak</a>
+                        
                     </div>
+                    <butaton type="button" class="btn text-secondary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
                     <a href="{{ url('register') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 mx-4 ">Register</a>
                     <a href="{{ route('login') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ">Login</a>
+                    
+
+
                 </div>
             </nav>
 
@@ -102,6 +107,28 @@
             </div>
         </div>
         <!-- Navbar & Hero End -->
+            
+            <!-- Full Screen Search Start -->
+            
+            <div class="modal fade" id="searchModal" tabindex="-1">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content" style="background: rgba(29, 29, 39, 0.7);">
+                        <div class="modal-header border-0">
+                            <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex align-items-center justify-content-center">
+                            <form action="/berita">
+                            <div class="input-group" style="max-width: 600px;">
+                                <input type="text" class="form-control bg-transparent border-light p-3" placeholder="Type search keyword..." name="search" id="search" value="{{ request('search') }}">
+                                <button class="btn btn-light px-4"><i class="bi bi-search"></i></button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+            <!-- Full Screen Search End -->
 
         <!-- Service Start -->
         <div style="margin-bottom:70px;margin-top: -400px" id="berita">&nbsp;</div>
@@ -111,6 +138,7 @@
                     <h6 class="text-white position-relative d-inline text-primary ps-4">Berita Kami</h6>
                     <h2 class="text-white mt-2">Berita Terbaru</h2>
                 </div>
+                
                 <div class="row g-4">
                     @foreach($data as $key => $value)
                     @if($value->status == 1)
@@ -136,7 +164,7 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            © Dinas Komunikasi dan Informatika Kabupaten Toba <?= date("Y") ?> . All rights reserved.
+                            © Dinas Komunikasi dan Informatika Kabupaten Toba & Kerja Pratek IT Del<?= date("Y") ?> . All rights reserved.
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">

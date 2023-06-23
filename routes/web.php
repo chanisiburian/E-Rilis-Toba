@@ -70,7 +70,7 @@ Route::middleware(isLogin::class)->group(function(){
     Route::post('berita/delete/{id}', [BeritaController::class, "delete"])->name("berita.delete");
 
     // USER
-    Route::post('user/add', [UserController::class, "add"])->name("user.add");
     Route::post('user/update/{id}', [UserController::class, "update"])->name("user.update");
     Route::post('user/delete/{id}', [UserController::class, "delete"])->name("user.delete");
 });
+    Route::post('user/add', [UserController::class, "add"])->name("user.add");

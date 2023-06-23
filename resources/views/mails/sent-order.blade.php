@@ -7,7 +7,7 @@
 </head>
 <body>
     Halo <br>
-    Berikut link untuk reset password <br>
+    Berikut link untuk reset password E-Rilis Toba<br>
     <a href="<?= route("auth.recovery-password")."?email=".$email ?>"><?= route("recovery-password")."?email=".$email ?></a>
 </body>
 </html>

@@ -34,7 +34,7 @@
                                 <th>{{ $value->nama }}</th>
                                 <th>{{ $value->level_id == 1 ? "Admin" : "User" }}</th>
                                 <th>{{ $value->status == 0 ? "Menunggu konfirmasi" : "Sudah Dikonfirmasi" }}</th>
-                                <th>{{ $value->media_digital == "" && $value->nama_perusahaan == "" && $value->url_mitra == "" && $value->nib == "" && $value->no_rekening == "" && $value->ktp == "" && $value->kta == "" && $value->npwp == "" ? "Belum dilengkapi" : "Sudah Dilengkapi" }}</th>
+                                <th>{{ $value->media_digital == null ? "Belum dilengkapi" : "Sudah Dilengkapi" }}</th>
                                 <th>
                                     <button 
                                         data-nama="{{ $value->nama }}"
@@ -54,7 +54,7 @@
                                         data-target="#detailModal" 
                                         class="btn btn-info btn-detail"
                                     >Detail</button>
-                                    @if($value->media_digital != "" && $value->nama_perusahaan != "" && $value->url_mitra != "" && $value->nib != "" && $value->no_rekening != "" && $value->ktp != "" && $value->kta != "" && $value->npwp != "" && $value->status != 1)
+                                    @if($value->media_digital != null && $value->status != 1)
                                     <button 
                                         data-user_id="{{ $value->id }}"
                                         data-toggle="modal" 

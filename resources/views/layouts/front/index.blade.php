@@ -57,9 +57,11 @@
             -webkit-box-orient: vertical;
         }
     </style>
+    
 </head>
 
 <body>
+    
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -88,6 +90,7 @@
                         <a href="#about" class="nav-item nav-link">About</a>
                         <a href="#kontak" class="nav-item nav-link">Kontak</a>
                     </div>
+                    <butaton type="button" class="btn text-secondary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
                     @if(Auth::user() == null)
                     <a href="{{ url('register') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 mx-4 ">Register</a>
                     <a href="{{ route('login') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ">Login</a>
@@ -99,7 +102,29 @@
                 </div>
             </nav>
 
-            <div class="container-xxl py-5 bg-primary hero-header mb-5" style="background-size: 10%">
+                    <!-- Full Screen Search Start -->
+                    
+                    <div class="modal fade" id="searchModal" tabindex="-1">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content" style="background: rgba(29, 29, 39, 0.7);">
+                                <div class="modal-header border-0">
+                                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body d-flex align-items-center justify-content-center">
+                                    <form action="/berita">
+                                    <div class="input-group" style="max-width: 600px;">
+                                        <input type="text" class="form-control bg-transparent border-light p-3" placeholder="Type search keyword..." name="search" id="search" value="{{ request('search') }}">
+                                        <button class="btn btn-light px-4"><i class="bi bi-search"></i></button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                    <!-- Full Screen Search End -->
+
+            <div class="container-xxl py-5 bg-primary hero-header mb-5">
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-lg-6 text-center text-lg-start">
@@ -148,32 +173,35 @@
         <!-- Service End -->
 
 
-        <!-- Testimonial Start -->
-        <div style="margin-bottom:70px" id="about">&nbsp;</div>
-        <div class="container-xxl bg-primary testimonial py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5 px-lg-5 row">
-                <div class="col-sm-8">
-                    <h3 class="left-heading text-white">Apa itu eRilis ?
-                    </h3>
-                    <p class="lead text-white">E-Rilis adalah Aplikasi pencatatan Rilis Berita Dari Media Mitra Kabupaten Dairi Secara
-                        Elektronik,
-                        diharapkan kedepan nya jika ada rilis berita positif terkait pemkab dairi dari media - media mitra,
-                        wartawan tidak lagi datang
-                        ke kantor diskominfo untuk melaporkan beritanya. <br><br> Dengan aplikasi ini media tinggal submit
-                        url berita yang sudah rilis tersebut ke aplikasi E-Rilis (erilis.dairikab.go.id)
-                    </p>
-                </div>
-                <div class="col-sm-4 d-flex justify-content-center">
-                    <img src="{{ asset('static/images/portfolio-3.jpg') }}" width="300px" class="img-thumbnail">
+                <!-- About baru Start -->
+        <div id="about"> 
+            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="position-relative d-inline text-primary ps-4">About</h6>
+                <h2 class="mt-2">Tentang E-Rilis</h2>
+            </div>
+            <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="container px-lg-5">
+                    <div class="row align-items-center" style="height: 250px;">
+                        <div class="col-12 col-md-6">
+                            <h3 class="text-white">Apa itu E-Rilis?</h3>
+                            <small class="text-white">E-Rilis adalah Media Elektronik berbasis website yang digunakan oleh Media Mitra Kabupaten Toba sebagai media pencatatan Rilis Berita, untuk mempermudah media mitra maupun wartawan untuk merilis berita secara online.
+                                <br> Dengan website ini Media Mitra hanya perlu submit url berita yang sudah dirillis.</small>
+                            
+                        </div>
+                        <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                            <img class="img-fluid mt-5" style="height: 250px;" src="static/images/newsletter.png">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Testimonial End -->
+            <!-- About baru End -->
 
         <!-- Team Start -->
         <div style="margin-bottom:70px" id="kontak">&nbsp;</div>
         <div class="container-xxl mb-5 mt-0">
             <div class="container px-lg-5">
+                
                 <footer class="footer footer-bg text-center">
                     <div class="container">
                         <div class="row">
@@ -181,7 +209,7 @@
                             <div class="col-lg-6 mb-5 mb-lg-0">
                                 <h4 class="text-uppercase mb-4">Location</h4>
                                 <p class="lead mb-0">
-                                    Jl. Lintas Sumatera No.16, Hinalang Bagasan, Kec. Balige, Toba, Sumatera Utara 22312
+                                    Jl. Tarutung Km. 2, Hinalang Bagasan, Kec. Balige, Toba, Sumatera Utara 22312
                                     <br>
                                     +6282165278788
                                     <br>
@@ -192,10 +220,17 @@
                             <div class="col-lg-6 mb-5 mb-lg-0">
                                 <h4 class="text-uppercase mb-4">Kunjungi Kami</h4>
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <a class="btn btn-outline-light btn-social mx-1" target="_blank" href="https://instagram.com/kominfo_toba?igshid=YmMyMTA2M2Y="><i class="fab fa-facebook text-primary"></i></a>
-                                    <a class="btn btn-outline-light btn-social mx-1" target="_blank" href="https://web.facebook.com/PemkabToba/?hc_ref=ART1MqSiQqEJTbHyURaulgXFdkxD0SP42HMcgAHpa3XuYIXX8wPwE_9-tVfPVVIs3D4&fref=nf&__tn__=kC-R&_rdc=1&_rdr"><i class="fab fa-instagram text-primary"></i></a>
-                                    <a class="btn btn-outline-light btn-social mx-1" target="_blank" href="https://m.youtube.com/channel/UCedRpcMbE9yv9LNmdY3dhfw"><i class="fab fa-youtube text-primary"></i></a>
+                                    <div><a class="btn btn-outline-light btn-social" target="_blank" href="https://web.facebook.com/PemkabToba/?hc_ref=ART1MqSiQqEJTbHyURaulgXFdkxD0SP42HMcgAHpa3XuYIXX8wPwE_9-tVfPVVIs3D4&fref=nf&__tn__=kC-R&_rdc=1&_rdr"><i class="fab fa-facebook text-primary">&nbsp;&nbsp;&nbsp;Facebook</i></a></div>
+                                    </div>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div><a class="btn btn-outline-light btn-social" target="_blank" href="https://instagram.com/kominfo_toba?igshid=YmMyMTA2M2Y="><i class="fab fa-instagram text-primary">&nbsp;&nbsp;&nbsp;Instagram</i></a></div>
                                 </div>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div><a class="btn btn-outline-light btn-social" target="_blank" href="https://m.youtube.com/channel/UCedRpcMbE9yv9LNmdY3dhfw"><i class="fab fa-youtube text-primary">&nbsp;&nbsp;&nbsp;Youtube</i></a></div>
+                                </div>
+                                {{-- <div class="d-flex justify-content-center align-items-center">
+                                    <div><a class="btn btn-outline-light btn-social" target="_blank" href="https://m.youtube.com/channel/UCedRpcMbE9yv9LNmdY3dhfw"><i class="fab fa- text-primary">&nbsp;&nbsp;&nbsp;Youtube</i></a></div>
+                                </div> --}}
                             </div>
                             
                         </div>
@@ -204,6 +239,7 @@
             </div>
         </div>
         <!-- Team End -->
+  
         
 
         <!-- Footer Start -->
@@ -211,9 +247,11 @@
             
             <div class="container px-lg-5">
                 <div class="copyright">
+                    
                     <div class="row">
+                        
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            © Dinas Komunikasi dan Informatika Kabupaten Toba <?= date("Y") ?> . All rights reserved.
+                            © Dinas Komunikasi dan Informatika Kabupaten Toba & Kerja Praktek IT Del <?= date("Y") ?>. <br>All rights reserved.
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
@@ -228,8 +266,9 @@
             </div>
         </div>
         <!-- Footer End -->
-
-
+        <div>
+            <p> E-Rilis Toba</p>
+        </div>
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
     </div>
@@ -244,7 +283,12 @@
     <script src="{{ asset('static') }}/lib/isotope/isotope.pkgd.min.js"></script>
     <script src="{{ asset('static') }}/lib/lightbox/js/lightbox.min.js"></script>
     <script src="{{ asset('static') }}/js/main.js"></script>
-
+    
+    <!-- Running Text -->
+    <div class="runtext">
+        <marquee><h4  class="xyz" ><i><b>Tampakna Do Rantosna, Rim Ni Tahi Do Gogona </i></b></h3></marquee>
+    </div>
+     <!-- Running Text -->
 </body>
 
 </html>

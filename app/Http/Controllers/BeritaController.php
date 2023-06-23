@@ -36,13 +36,19 @@ class BeritaController extends Controller{
 
     public function homepage(Request $request){
         $data = Berita::orderBy("id","desc")->with("user")->get();
-        
+        if(request('search')){
+            $data = Berita::where('judul', 'like', '%'.request('search').'%')->
+            orwhere('isi', 'like', '%'.request('search').'%')->get();
+          }
         return view("home", compact("data"));
     }
 
     public function berita(Request $request){
         $data = Berita::orderBy("id","desc")->with("user")->get();
-        
+        if(request('search')){
+            $data = Berita::where('judul', 'like', '%'.request('search').'%')->
+            orwhere('isi', 'like', '%'.request('search').'%')->get();
+          }
         return view("berita", compact("data"));
     }
 
@@ -61,7 +67,8 @@ class BeritaController extends Controller{
         }
 
         $data = Berita::where($where)->orderBy("id","desc")->with("user")->get();
-        $countActive = Berita::where('status',1)->count();
+        $where['status'] = 1;
+        $countActive = Berita::where($where)->count();
 
         if(auth()->user()->level_id == "1"){
             return view("admin.dashboard", compact("data"));

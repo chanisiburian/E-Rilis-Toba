@@ -120,6 +120,7 @@
                                 <div class="form-group">
                                     <label for="">Kategori</label>
                                     <select name="kategori" class="form-control" disabled>
+                                        <option selected disabled>---Pilih Kategori---</option>
                                         <option value="budaya">Budaya</option>
                                         <option value="pariwisata">Pariwisata</option>
                                         <option value="pendidikan">Pendidikan</option>

@@ -20,6 +20,8 @@
                                 @csrf
                                 <div class="form-group">
                                     <input required type="text" autocomplete="off" class="form-control form-control-user" name="nama" placeholder="Nama">
+                                    <input required type="hidden" name="level_id" value="2">
+                                    <input required type="hidden" name="status" value="0">
                                 </div>
                                 <div class="form-group">
                                     <input required type="text" autocomplete="off" class="form-control form-control-user" name="username" placeholder="Username">

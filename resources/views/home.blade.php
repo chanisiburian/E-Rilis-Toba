@@ -11,8 +11,8 @@
                             </div>
                             <div class="col-sm-5">
                                 <div class="bg-white rounded shadow p-5 m-0">
-                                    <h1><span>Selamat Datang di </span> {{ env('APP_NAME') }}</h1><br>
-                                    <p class="m-0">Kami menyediakan berbagai macam jenis Pisang </p>
+                                    <h1><span>Selamat Datang di E-Rilis Toba</span> {{ env('APP_NAME') }}</h1><br>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-12 text-center ">
                 <div class="bg-light py-2 rounded">
-                    <h2>Produk Kami</h2>
+                    <h2></h2>
                 </div>
             </div>
         </div>
